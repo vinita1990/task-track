@@ -1,0 +1,75 @@
+<h2 class="text-center">My Task App</h2>
+<div class="col-lg-2"></div>
+<div class="col-lg-8">
+<div class="table">
+  <table class="table">
+    <thead>
+      <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of taskData?.documents">
+        <td>
+          {{ item.fields.title.stringValue }}
+        </td>
+        <td>
+          {{ item.fields.description.stringValue }}
+        </td>
+        <td><button class="btn btn-primary">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr *ngFor="let item of newData; let rowIndex = index">
+        <td>{{ item.title }}</td>
+        <td>{{ item.description }}</td>
+        <td><button class="btn btn-primary" (click)="deleteRow(rowIndex)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <!--form to add the tasks-->
+  <div class="form-container">
+    <h4 class="text-center">Add the task</h4>
+    <form #newTaskForm="ngForm" action="../tasks" (ngSubmit)="onTaskSubmit(newTaskForm.value)">
+      <div class="form-group col-sm-6">
+        <label for="address" class="">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Title"
+          name="title"
+          ngModel
+          required>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="price" class="">Desciption</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Desciption"
+          name="description"
+          ngModel
+          required>
+      </div>
+      <div class="form-group col-sm-12">
+        <button
+          class="btn btn-primary listing-button"
+          type="submit"
+          ng-show="addListing"> <!--[routerLink]="['../tasks']"-->
+            Add
+        </button>
+      </div>
+    </form>
+</div>
+</div>
+<div class="col-lg-2"></div>
+
+
+   
+
+   
